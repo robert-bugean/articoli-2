@@ -17,6 +17,6 @@ export class ArticleListComponent implements OnInit {
   articles$?: Observable<Article[]> = this.store.pipe(select(getArticles));
 
   ngOnInit() {
-    // this.store.dispatch(loadArticle());
+    this.store.dispatch(loadArticle());
   }
 }
