@@ -19,6 +19,7 @@ export const appReducer = createReducer(
       articles: [...state.articles.slice(getIndex(id), 1)]
     }))
 )
+
 export const getArticleState = createFeatureSelector<AppState>('app');
 
 export const getArticles = createSelector(
