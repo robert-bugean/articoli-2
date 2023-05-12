@@ -4,7 +4,7 @@ import { select, Store } from '@ngrx/store';
 
 import { Article } from '../store/article';
 import { getArticles } from '../store/reducers';
-import { loadArticles } from '../store/actions';
+import { loadArticle } from '../store/actions';
 
 @Component({
   selector: 'app-article-delete',
@@ -17,7 +17,7 @@ export class ArticleDeleteComponent {
   constructor(private store: Store) {}
 
   onInit() {
-    this.store.dispatch(loadArticles());
+    this.store.dispatch(loadArticle());
   }
 
   value = ''

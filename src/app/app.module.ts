@@ -10,7 +10,7 @@ import { MaterialModule } from './modules/material.module';
 
 import { AppComponent } from './app.component';
 import { appReducer } from './store/reducers';
-// import { ArticleListComponent } from './article-list/article-list.component';
+import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleDeleteComponent } from './article-delete/article-delete.component';
 
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
@@ -21,7 +21,7 @@ import { AppEffects } from './store/effects';
 @NgModule({
   declarations: [
     AppComponent,
-    // ArticleListComponent,
+    ArticleListComponent,
     ArticleDeleteComponent
   ],
   imports: [
