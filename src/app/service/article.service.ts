@@ -8,7 +8,8 @@ import { Article } from '../store/article';
 export class ArticleService {
   constructor(private httpClient: HttpClient) {}
 
-  getArticles() {
-    return this.httpClient.get<Article[]>('api/articles/').pipe()
+  getAllArticles() {
+    return this.httpClient.get<Article[]>('api/articles/');
   }
+
 }

@@ -13,6 +13,10 @@ import { appReducer } from './store/reducers';
 // import { ArticleListComponent } from './article-list/article-list.component';
 import { ArticleDeleteComponent } from './article-delete/article-delete.component';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DataService } from './store/memory';
+import { AppEffects } from './store/effects';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +31,8 @@ import { ArticleDeleteComponent } from './article-delete/article-delete.componen
     FormsModule,
     MaterialModule,
     StoreModule.forRoot({app: appReducer}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
+    HttpClientInMemoryWebApiModule.forRoot(DataService),
   ],
   providers: [],
   bootstrap: [AppComponent]

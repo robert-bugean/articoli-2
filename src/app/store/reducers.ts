@@ -1,26 +1,30 @@
 import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
+import { AppState } from "./app.state";
+
+import { loadArticleSuccess } from './actions';
 import { deleteArticle } from './actions';
-import { AppState } from './app.state';
 
 const initialState: AppState = {
   articles: [],
 };
 
 export const appReducer = createReducer(
-  initialState,
-  on(deleteArticle, (state, { id }) => ({
-    ...state,
-    articles: [...state.articles.slice(getIndex(id), 1)]
-  }))
-);
-
-export const getArticlesState = createFeatureSelector<AppState>('app');
+    initialState,
+    on(loadArticleSuccess, (state, { payload }) => ({
+      ...state,
+      articles: payload,
+    })),
+    on(deleteArticle, (state, { id }) => ({
+      ...state,
+      articles: [...state.articles.slice(getIndex(id), 1)]
+    }))
+)
+export const getArticleState = createFeatureSelector<AppState>('app');
 
 export const getArticles = createSelector(
-  getArticlesState,
-  (state: AppState) => state.articles
-)
-
+    getArticleState, 
+    (state: AppState) => state.articles 
+);
 
 
 function getIndex(id: number) {
