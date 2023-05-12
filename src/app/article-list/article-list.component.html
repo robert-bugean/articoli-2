@@ -1,7 +1,11 @@
-<ng-container *ngIf="articles$ | async as articles; else spinner">
+<div>App article list</div>
+
+<ng-container *ngIf="(articles$ | async) as articles; else spinner ">
   {{ articles | json }}
+  
 </ng-container>
 
 <ng-template #spinner>
   <mat-progress-spinner></mat-progress-spinner>
 </ng-template>
+

@@ -12,6 +12,10 @@ import { AppComponent } from './app.component';
 import { appReducer } from './store/reducers';
 import { ArticleListComponent } from './article-list/article-list.component';
 
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { DataService } from './store/memory';
+import { AppEffects } from './store/effects';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +29,8 @@ import { ArticleListComponent } from './article-list/article-list.component';
     FormsModule,
     MaterialModule,
     StoreModule.forRoot({app: appReducer}),
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([AppEffects]),
+    HttpClientInMemoryWebApiModule.forRoot(DataService),
   ],
   providers: [],
   bootstrap: [AppComponent]

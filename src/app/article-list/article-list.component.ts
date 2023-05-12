@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { loadArticle } from 'src/app/actions';
-import { Article } from 'src/app/article';
-import { getArticles } from 'src/app/reducers';
+import { Article } from '../store/article';
+import { getArticles } from '../store/reducers';
+import { loadArticle } from '../store/actions';
 
 @Component({
   selector: 'app-article-list',
