@@ -13,6 +13,7 @@ import { loadArticle } from '../store/actions';
 export class ArticleListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'content'];
+  
   constructor(private store: Store) {}
   articles$?: Observable<Article[]> = this.store.pipe(select(getArticles));
 

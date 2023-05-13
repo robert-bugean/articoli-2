@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MaterialModule } from './modules/material.module';
 
@@ -16,13 +17,15 @@ import { ArticleDeleteComponent } from './article-delete/article-delete.componen
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './store/memory';
 import { AppEffects } from './store/effects';
+import { CreateArticleComponent } from './create-article/create-article.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleListComponent,
-    ArticleDeleteComponent
+    ArticleDeleteComponent,
+    CreateArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +36,7 @@ import { AppEffects } from './store/effects';
     StoreModule.forRoot({app: appReducer}),
     EffectsModule.forRoot([AppEffects]),
     HttpClientInMemoryWebApiModule.forRoot(DataService),
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

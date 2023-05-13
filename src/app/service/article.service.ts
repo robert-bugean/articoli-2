@@ -12,4 +12,9 @@ export class ArticleService {
     return this.httpClient.get<Article[]>('api/articles/');
   }
 
+  insertArticle(article : Article) {
+    return this.httpClient.post<Article>('api/articles/', article);
+
+  }
+
 }

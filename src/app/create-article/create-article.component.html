@@ -1,0 +1,84 @@
+<!-- <form [formGroup]="insertArticle" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="id">Id:</label>
+    <input
+      type="number"
+      id="id"
+      formControlName="id"
+      [ngClass]="{ invalid: insertArticle.controls['id'].invalid }"
+    />
+  </div>
+
+  <div>
+    <label for="title">Title:</label>
+    <input
+      type="text"
+      id="title"
+      formControlName="title"
+      [ngClass]="{ invalid: insertArticle.controls['title'].invalid }"
+    />
+  </div>
+
+  <div>
+    <label for="content">Content:</label>
+    <input
+      type="text"
+      id="content"
+      formControlName="content"
+      [ngClass]="{
+        invalid: insertArticle.controls['content'].invalid
+      }"
+    />
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="insertArticle.invalid">
+      Inserisci Articolo
+    </button>
+  </div>
+</form> -->
+
+<mat-card>
+  <mat-card-title>Inserisci Articolo</mat-card-title>
+
+  <form [formGroup]="insertArticle" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label>Id</mat-label>
+      <input matInput type="number" formControlName="id" />
+      <mat-error *ngIf="insertArticle.controls['id'].invalid"
+        >Campo obbligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field>
+      <mat-label>Titolo</mat-label>
+      <input matInput type="text" formControlName="title" />
+      <mat-error *ngIf="insertArticle.controls['title'].invalid"
+        >Campo obbligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <br />
+
+    <mat-form-field class="mat-form-field-flex">
+      <mat-label>Contenuto</mat-label>
+      <input matInput type="text" formControlName="content" />
+      <mat-error *ngIf="insertArticle.controls['content'].invalid"
+        >Campo obbligatorio</mat-error
+      >
+    </mat-form-field>
+
+    <br />
+
+    <button
+      mat-raised-button
+      class="mat-form-field-infix"
+      type="submit"
+      [disabled]="insertArticle.invalid"
+    >
+      Inserisci Articolo
+    </button>
+  </form>
+</mat-card>
