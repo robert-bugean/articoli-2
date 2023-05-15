@@ -13,3 +13,7 @@ export const createArticle = createAction('[Article] Create Article', props<{art
 export const createArticleSuccess = createAction('[Article] Create Article Success', props<{article : Article}>())
 export const createArticleFailure = createAction('[Article] Create Article Failure', props<{error : Error}>())
 
+
+//edit article
+export const editArticle=createAction('[Article-Edit] Edit Article',props<{article:Article}>())
+export const editArticleSuccess=createAction('[Article-Edit] Edit Article Success',props<{article:Article}>())

@@ -1,0 +1,39 @@
+<mat-card>
+    <mat-card-title>Edit article</mat-card-title>
+  
+    <form [formGroup]="editArticle" (ngSubmit)="onSubmit()">
+
+      <mat-form-field>
+        <mat-label>Id</mat-label>
+        <input matInput type="number" formControlName="id" />
+        <mat-error *ngIf="editArticle.controls['id'].invalid">Campo obbligatorio</mat-error>
+      </mat-form-field>
+  
+      <br />
+  
+      <mat-form-field>
+        <mat-label>Titolo</mat-label>
+        <input matInput type="text" formControlName="title" />
+        <mat-error *ngIf="editArticle.controls['title'].invalid">Campo obbligatorio</mat-error>
+      </mat-form-field>
+  
+      <br />
+  
+      <mat-form-field class="mat-form-field-flex">
+        <mat-label>Contenuto</mat-label>
+        <input matInput type="text" formControlName="content" />
+        <mat-error *ngIf="editArticle.controls['content'].invalid">Campo obbligatorio</mat-error>
+      </mat-form-field>
+  
+      <br />
+  
+      <button
+        mat-raised-button
+        class="mat-form-field-infix"
+        type="submit"
+        [disabled]="editArticle.invalid"
+      >
+        Edit article
+      </button>
+    </form>
+  </mat-card>

@@ -1,5 +1,5 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, withLatestFrom, catchError, of } from 'rxjs';
+import { switchMap, map, withLatestFrom, catchError, of, concatMap } from 'rxjs';
 import { Article } from './article';
 import { Store } from '@ngrx/store';
 
@@ -8,6 +8,8 @@ import { ArticleService } from '../service/article.service';
 import {
   createArticle,
   createArticleSuccess,
+  editArticle,
+  editArticleSuccess,
   loadArticle,
   loadArticleSuccess,
 } from './actions';
@@ -49,4 +51,18 @@ export class AppEffects {
     ),
     {dispatch : false}
   );
+
+
+  editArticle$=createEffect(()=>
+  this.actions$.pipe(
+    ofType(editArticle),
+    switchMap((action) =>
+      this.articleService.editArticle(action.article).pipe(
+        map((article) => editArticleSuccess({ article: article }))
+      )
+    )
+  ),
+  {dispatch : false}
+  )
+  
 }
