@@ -17,4 +17,8 @@ export class ArticleService {
 
   }
 
+  editArticle(article:Article){
+    return this.httpClient.put<Article>('api/articles/', article);
+  }
+
 }

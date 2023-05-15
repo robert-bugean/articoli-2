@@ -18,6 +18,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { DataService } from './store/memory';
 import { AppEffects } from './store/effects';
 import { CreateArticleComponent } from './create-article/create-article.component';
+import { EditArticleComponent } from './edit-article/edit-article.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { CreateArticleComponent } from './create-article/create-article.componen
     AppComponent,
     ArticleListComponent,
     ArticleDeleteComponent,
-    CreateArticleComponent
+    CreateArticleComponent,
+    EditArticleComponent
   ],
   imports: [
     BrowserModule,
