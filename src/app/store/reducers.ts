@@ -1,7 +1,7 @@
 import { createFeatureSelector, createReducer, createSelector, on } from '@ngrx/store';
 import { AppState } from "./app.state";
 
-import { createArticle, loadArticleSuccess } from './actions';
+import { createArticle, createArticleSuccess, loadArticleSuccess } from './actions';
 import { deleteArticle } from './actions';
 import { state } from '@angular/animations';
 
@@ -19,7 +19,7 @@ export const appReducer = createReducer(
       ...state,
       articles: [...state.articles.slice(getIndex(id), 1)]
     })),
-    on(createArticle, (state, { article }) => ({
+    on(createArticleSuccess, (state, { article }) => ({
       ...state,
       articles: [...state.articles, article],
     })),

@@ -1,5 +1,5 @@
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, map, withLatestFrom, catchError, of } from 'rxjs';
+import { switchMap, map, withLatestFrom, catchError, of, tap, throwError } from 'rxjs';
 import { Article } from './article';
 import { Store } from '@ngrx/store';
 
@@ -11,7 +11,6 @@ import {
   loadArticle,
   loadArticleSuccess,
 } from './actions';
-import { getArticles } from './reducers';
 
 @Injectable()
 export class AppEffects {
@@ -34,19 +33,19 @@ export class AppEffects {
 
   createArticle$ = createEffect(() =>
     this.actions$.pipe(
-      // converte
       ofType(createArticle),
       // prende gli articoli più recenti dalla lista
-      withLatestFrom(this.store.select(getArticles)),
       switchMap((action) =>
         // converte il metodo insertArticle in observable
-        this.articleService.insertArticle(action[0].article).pipe(
+        this.articleService.insertArticle(action.article).pipe(
           // prende il valore di ritorno e ritorna una nuova azione createArticleSuccess
-          map((article) => createArticleSuccess({ article: article }))
-          // catchError(error => of(createArticleFailure(error)))
+          map((article) => createArticleSuccess({ article: article })),
+          catchError((error) => {
+            const errorMessage = 'Errore di rete: durante l\'inserimento dell\'articolo';
+            return throwError(errorMessage);
+          })
         )
       )
     ),
-    {dispatch : false}
   );
 }

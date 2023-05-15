@@ -8,6 +8,7 @@ export class DataService implements InMemoryDbService {
         { id: 2, title: 'B', content: 'content b' },
         { id: 3, title: 'C', content: 'content c' },
       ],
+    
     };
   }
 }
